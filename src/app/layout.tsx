@@ -1,9 +1,7 @@
 import { FC, ReactNode } from "react";
 import "./globals.css";
 
-export const generateMetadata = async () => ({
-  title: "Create Next Appa",
-});
+export const generateMetadata = async () => ({});
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -12,10 +10,7 @@ interface RootLayoutProps {
 const RootLayout: FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en">
-      <body>
-        <p>root layout</p>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 };

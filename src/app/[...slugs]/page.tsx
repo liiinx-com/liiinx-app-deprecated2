@@ -5,8 +5,6 @@ interface GenericPageParams {
 }
 
 export const generateMetadata = async ({ params }: GenericPageParams) => {
-  // TODO: fix any
-  console.log("generateMetadata page", params);
   return { title: "Create Next Apping", description: "website app" };
 };
 
