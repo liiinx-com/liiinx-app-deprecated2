@@ -1,6 +1,9 @@
-export const Footer1 = () => {
+import { FC } from "react";
+import { FooterProps } from "..";
+
+export const Footer1: FC<FooterProps> = ({ className = "", style = {} }) => {
   return (
-    <footer className="bg-white dark:bg-gray-900">
+    <footer className={` dark:bg-gray-900 ${className} `} style={style}>
       <div className="container px-6 py-8 mx-auto">
         <div className="flex flex-col items-center text-center">
           <a href="#">

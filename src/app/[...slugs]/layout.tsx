@@ -1,5 +1,7 @@
 import { LayoutFactory } from "@/layouts/layout-factory";
+import { getPageData } from "@/services";
 import { ReactNode } from "react";
+import "./globals.css";
 
 export interface WebsiteRouteParams {
   slugs: string[];
@@ -16,13 +18,8 @@ export const generateMetadata = async ({ params }: any) => {
 };
 
 const WebsiteLayout = async ({ children, params }: WebsiteLayoutProps) => {
-  const [handle = "liiinx", pageName = "home"] = params.slugs;
-  const { layout, page, theme } = await (
-    await fetch(`http://localhost:3000/api/${handle}/bio`)
-  ).json();
-  const { variant } = layout;
-
-  return <LayoutFactory componentVariant={variant}>{children}</LayoutFactory>;
+  const { layout } = await getPageData({ params });
+  return <LayoutFactory layoutData={layout}>{children}</LayoutFactory>;
 };
 
 export default WebsiteLayout;

@@ -1,17 +1,25 @@
+import { LayoutData } from "@/services/types";
 import { FC, ReactNode } from "react";
-import { ElasticLayout } from "./elastic-layout";
+import { HeemLayout } from "./heem";
 
-interface LayoutFactoryProps {
-  componentVariant: string;
+export interface LayoutFactoryProps {
+  layoutData: LayoutData;
   children: ReactNode;
 }
 
 export const LayoutFactory: FC<LayoutFactoryProps> = ({
   children,
-  componentVariant,
+  layoutData,
 }) => {
-  if (componentVariant === "layout1")
-    return <ElasticLayout>{children}</ElasticLayout>;
+  const { variant } = layoutData;
 
-  return <div>{children}</div>;
+  if (variant === "heem")
+    return <HeemLayout layoutData={layoutData}>{children}</HeemLayout>;
+
+  return (
+    <div>
+      <p>generic layout</p>
+      {children}
+    </div>
+  );
 };

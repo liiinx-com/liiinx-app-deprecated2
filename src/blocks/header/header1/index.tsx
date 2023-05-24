@@ -1,17 +1,30 @@
 "use client";
 
+import { IconMenu } from "@/components/icons";
 import { useState } from "react";
+import { HeaderProps } from "..";
 
-export const Header1 = () => {
+export const Header1 = ({
+  dir,
+  shadow,
+  className = "",
+  style = {},
+}: HeaderProps) => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <nav className="relative bg-white shadow dark:bg-gray-800">
-      <div className="container px-6 py-4 mx-auto">
+    <nav
+      dir={dir}
+      className={`relative ${
+        shadow ? "shadow" : ""
+      } dark:bg-gray-800 ${className}`}
+      style={style}
+    >
+      <div className="container px-4 py-4 mx-auto">
         <div className="lg:flex lg:items-center lg:justify-between">
           <div className="flex items-center justify-between">
             <a href="#">
-              {/* <img className="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt=""> */}
+              {/* <TitleBar className="mt-2" title="Salamat Trading" /> */}
             </a>
 
             <div className="flex lg:hidden">
@@ -21,7 +34,7 @@ export const Header1 = () => {
                 className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
                 aria-label="toggle menu"
               >
-                button1
+                <IconMenu />
               </button>
             </div>
           </div>

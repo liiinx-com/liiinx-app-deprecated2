@@ -1,0 +1,47 @@
+.layoutWrapper {
+  display: flex;
+  flex-direction: row;
+
+  --headerImageHeight: 200px;
+  --bg-color: #151e30;
+  --primary-text-color: red;
+  --secondary-text-color: green;
+}
+
+.sidebar {
+  background: #d7e8d4;
+  flex: 1;
+}
+
+.mainWrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 5;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  flex: 3;
+}
+
+.leftBar {
+  background: beige;
+  flex: 1;
+}
+
+.rightBar {
+  background: red;
+  flex: 1;
+}
+
+.header {
+  background-color: transparent;
+}
+
+.footer {
+  background: yellowgreen;
+}
