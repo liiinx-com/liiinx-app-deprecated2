@@ -1,6 +1,6 @@
 "use client";
-
 import { IconMenu } from "@/components/icons";
+import { store } from "@/store";
 import { useState } from "react";
 import { HeaderProps } from "..";
 
@@ -10,6 +10,8 @@ export const Header1 = ({
   className = "",
   style = {},
 }: HeaderProps) => {
+  const t = store.getState().theme;
+  console.log("t :>> ", t);
   const [isOpen, setOpen] = useState(false);
 
   return (

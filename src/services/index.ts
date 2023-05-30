@@ -1,6 +1,5 @@
 import { WebsiteRouteParams } from "@/app/[...slugs]/layout";
-import { WebpageData, sampleHeroBlock } from "@/services/types";
-import { sampleSocialLinksBlock } from "./types/social-links";
+import { WebpageData } from "@/services/types";
 
 export const getPageData = async ({
   params,
@@ -14,8 +13,8 @@ export const getPageData = async ({
     })
   ).json();
 
-  webpageData.layout.blocks = [sampleHeroBlock];
-  webpageData.page.blocks = [sampleSocialLinksBlock];
+  // webpageData.layout.blocks = [sampleHeroBlock];
+  // webpageData.page.blocks = [sampleSocialLinksBlock];
 
   return webpageData;
 };

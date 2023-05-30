@@ -1,28 +1,16 @@
 .wrapper {
   height: 100%;
-  background-color: var(--bg-color);
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  --headerHeight: 250px;
-  --main-border-color: black;
-  --bg-color: #81c784;
-  --primary-text-color: red;
-  --secondary-text-color: green;
-  --profileImageBorderColor: red;
-  --profileImageBorderWidth: 2px;
 }
 .headerWrapper {
-  height: var(--headerHeight);
   width: 100%;
-  background-image: url(https://media.istockphoto.com/id/1410766826/photo/full-frame-of-green-leaves-pattern-background.jpg?b=1&s=170667a&w=0&k=20&c=YRUnHUZxhaDmZ2OoLEXlZ7CmdfQwdCDnytJVSuY4BiI=);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .contentWrapper {
-  /* background-color: transparent; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -30,22 +18,14 @@
 }
 
 .sectionsWrapper {
-  /* background: linear-gradient(var(--bg-color), var(--bg-color), #c8e6c9); */
-  /* background-color: var(--bg-color); */
   width: 100%;
   margin-top: 1rem;
 }
 
 .profileImageWrapper {
-  background-color: var(--bg-color);
-  border-top: 1px solid var(--main-border-color);
   width: 100%;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
-}
-
-.profileImage {
-  border: var(--profileImageBorderWidth) solid var(--profileImageBorderColor);
 }
 
 .footerWrapper {

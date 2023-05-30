@@ -1,42 +1,37 @@
-import { LayoutData } from "@/services/types";
+import { LayoutData, ThemeDto } from "@/services/types";
 import { FC, ReactNode } from "react";
 import styles from "./index.module.css";
 
 interface HeemLayoutProps {
   children: ReactNode;
+  theme: ThemeDto;
   layoutData: LayoutData;
 }
 
-const layoutConfig = {
-  sidebar: { isActive: false },
-  header: { isActive: false },
-  footer: { isActive: false },
-  main: {
-    leftBar: { isActive: false },
-    rightBar: { isActive: false },
-  },
-};
-
-export const HeemLayout: FC<HeemLayoutProps> = ({ children }) => {
+export const HeemLayout: FC<HeemLayoutProps> = ({
+  children,
+  theme,
+  layoutData: { settings },
+}) => {
   return (
     <div className={`container mx-auto sm:px-4 ${styles.layoutWrapper}`}>
-      {layoutConfig.sidebar.isActive && (
+      {settings.sidebar?.isActive && (
         <nav className={styles.sidebar}>Sidebar</nav>
       )}
       <div className={styles.mainWrapper}>
-        {layoutConfig.header.isActive && (
+        {settings.header?.isActive && (
           <header className={styles.header}>Header</header>
         )}
         <main className={styles.mainContent}>
-          {layoutConfig.main.leftBar.isActive && (
+          {settings.main?.leftBar?.isActive && (
             <aside className={styles.leftBar}>left-bar</aside>
           )}
           <article className={styles.content}>{children}</article>
-          {layoutConfig.main.rightBar.isActive && (
+          {settings.main?.rightBar?.isActive && (
             <aside className={styles.rightBar}>Aside</aside>
           )}
         </main>
-        {layoutConfig.footer.isActive && (
+        {settings.footer?.isActive && (
           <footer className={styles.footer}>Footer</footer>
         )}
       </div>

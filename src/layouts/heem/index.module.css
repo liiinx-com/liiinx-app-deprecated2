@@ -1,15 +1,9 @@
 .layoutWrapper {
   display: flex;
   flex-direction: row;
-
-  --headerImageHeight: 200px;
-  --bg-color: #151e30;
-  --primary-text-color: red;
-  --secondary-text-color: green;
 }
 
 .sidebar {
-  background: #d7e8d4;
   flex: 1;
 }
 
@@ -29,12 +23,10 @@
 }
 
 .leftBar {
-  background: beige;
   flex: 1;
 }
 
 .rightBar {
-  background: red;
   flex: 1;
 }
 
@@ -43,5 +35,4 @@
 }
 
 .footer {
-  background: yellowgreen;
 }

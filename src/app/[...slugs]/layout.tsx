@@ -1,3 +1,4 @@
+import AppState from "@/components/app-state";
 import { LayoutFactory } from "@/layouts/layout-factory";
 import { getPageData } from "@/services";
 import { ReactNode } from "react";
@@ -18,8 +19,15 @@ export const generateMetadata = async ({ params }: any) => {
 };
 
 const WebsiteLayout = async ({ children, params }: WebsiteLayoutProps) => {
-  const { layout } = await getPageData({ params });
-  return <LayoutFactory layoutData={layout}>{children}</LayoutFactory>;
+  const { layout, theme } = await getPageData({ params });
+
+  return (
+    <AppState>
+      <LayoutFactory theme={theme} layoutData={layout}>
+        {children}
+      </LayoutFactory>
+    </AppState>
+  );
 };
 
 export default WebsiteLayout;
