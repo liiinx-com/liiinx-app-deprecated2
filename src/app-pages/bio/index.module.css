@@ -1,0 +1,33 @@
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.headerWrapper {
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.contentWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionsWrapper {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.profileImageWrapper {
+  width: 100%;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+}
+
+.footerWrapper {
+  width: 100%;
+}

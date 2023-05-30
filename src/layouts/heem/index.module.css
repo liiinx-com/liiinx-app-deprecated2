@@ -1,0 +1,38 @@
+.layoutWrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  flex: 1;
+}
+
+.mainWrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 5;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  flex: 3;
+}
+
+.leftBar {
+  flex: 1;
+}
+
+.rightBar {
+  flex: 1;
+}
+
+.header {
+  background-color: transparent;
+}
+
+.footer {
+}
