@@ -13,6 +13,8 @@ export const getPageData = async ({
     })
   ).json();
 
+  console.log("webpageData :>> ", webpageData);
+
   // webpageData.layout.blocks = [sampleHeroBlock];
   // webpageData.page.blocks = [sampleSocialLinksBlock];
 

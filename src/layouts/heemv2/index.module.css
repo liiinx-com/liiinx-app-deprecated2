@@ -1,0 +1,38 @@
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+}
+
+.header {
+  background-color: transparent;
+}
+
+/* ------- */
+.mainWrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 5;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  flex: 3;
+}
+
+.left-bar {
+  flex: 1;
+}
+
+.right-bar {
+  flex: 1;
+}
+
+.footer {
+}

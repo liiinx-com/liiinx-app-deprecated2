@@ -1,7 +1,14 @@
+import Link from "next/link";
 import { FC } from "react";
 import { FooterProps } from "..";
 
-export const Footer1: FC<FooterProps> = ({ className = "", style = {} }) => {
+export const Footer1: FC<FooterProps> = ({
+  menu,
+  className = "",
+  style = {},
+}) => {
+  const { items } = menu;
+
   return (
     <footer className={` dark:bg-gray-900 ${className} `} style={style}>
       <div className="container px-6 py-8 mx-auto">
@@ -11,50 +18,16 @@ export const Footer1: FC<FooterProps> = ({ className = "", style = {} }) => {
           </a>
 
           <div className="flex flex-wrap justify-center mt-6 -mx-4">
-            <a
-              href="#"
-              className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
-              aria-label="Reddit"
-            >
-              {" "}
-              Home{" "}
-            </a>
-
-            <a
-              href="#"
-              className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
-              aria-label="Reddit"
-            >
-              {" "}
-              About{" "}
-            </a>
-
-            <a
-              href="#"
-              className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
-              aria-label="Reddit"
-            >
-              {" "}
-              Teams{" "}
-            </a>
-
-            <a
-              href="#"
-              className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
-              aria-label="Reddit"
-            >
-              {" "}
-              Privacy{" "}
-            </a>
-
-            <a
-              href="#"
-              className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
-              aria-label="Reddit"
-            >
-              {" "}
-              Cookies{" "}
-            </a>
+            {items.map(({ url, id, target, title }) => (
+              <Link
+                key={id}
+                href={url}
+                target={target}
+                className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
+              >
+                {title}
+              </Link>
+            ))}
           </div>
         </div>
 

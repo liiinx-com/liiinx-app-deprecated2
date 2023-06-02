@@ -1,6 +1,6 @@
 import { LayoutData, ThemeDto } from "@/services/types";
 import { FC, ReactNode } from "react";
-import { HeemLayout } from "./heem";
+import { HeemLayout } from "./heemv2";
 
 export interface LayoutFactoryProps {
   layoutData: LayoutData;
@@ -22,7 +22,7 @@ export const LayoutFactory: FC<LayoutFactoryProps> = ({
         style={{
           width: "100%",
           height: "100%",
-          backgroundColor: theme.bodyBgColor,
+          backgroundColor: theme.body.bgColor,
         }}
       >
         <HeemLayout theme={theme} layoutData={layoutData}>
