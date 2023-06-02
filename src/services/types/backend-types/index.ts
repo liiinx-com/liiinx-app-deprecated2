@@ -1,4 +1,7 @@
 import { MenusDto } from "./menu";
+import { ThemeDto } from "./theme";
+
+export * from "./theme";
 
 interface Element {
   className?: string;
@@ -38,21 +41,6 @@ export interface WebpageData {
   layout: LayoutData;
   page: PageData;
   theme: ThemeDto;
-}
-
-export interface ThemeDto {
-  code?: string;
-
-  bodyBgColor: string;
-  primaryBgColor: string;
-  headerHeight: string;
-  headerImageUrl?: string;
-  headerImageStyle?: object;
-  mainBorderColor: string;
-  primaryTextColor: string;
-  profileImageBorderColor: string;
-  profileImageBorderWidth: string;
-  secondaryTextColor: string;
 }
 
 export interface PageData {

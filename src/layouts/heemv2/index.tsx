@@ -24,6 +24,7 @@ export const HeemLayout: FC<HeemLayoutProps> = ({
     settings,
     menus: { headerPrimary, footerPrimary },
   } = layoutData;
+
   return (
     <div className={`${styles["app-wrapper"]}`}>
       {settings.topBar?.isActive && (
@@ -48,8 +49,11 @@ export const HeemLayout: FC<HeemLayoutProps> = ({
         <Section
           id="header-wrapper"
           contained={settings?.header?.wrapper.contained}
-          className={`${settings?.header?.wrapper.className} bg-blue-700`}
-          style={settings?.header?.wrapper.style}
+          className={`${settings?.header?.wrapper.className}`}
+          style={{
+            backgroundColor: theme.body.bgColor,
+            ...settings?.header?.wrapper.style,
+          }}
         >
           <Section
             id="header"
@@ -71,7 +75,10 @@ export const HeemLayout: FC<HeemLayoutProps> = ({
           id="hero-wrapper"
           contained={settings?.hero?.wrapper.contained}
           className={`${settings?.hero?.wrapper.className} bg-amber-700`}
-          style={settings?.hero?.wrapper.style}
+          style={{
+            backgroundColor: theme.body.bgColor,
+            ...settings?.hero?.wrapper.style,
+          }}
         >
           <Section
             id="hero"
@@ -88,7 +95,10 @@ export const HeemLayout: FC<HeemLayoutProps> = ({
           id="content-wrapper"
           contained={settings?.content?.wrapper.contained}
           className={`${settings?.content?.wrapper.className} bg-sky-700`}
-          style={settings?.content?.wrapper.style}
+          style={{
+            backgroundColor: theme.body.bgColor,
+            ...settings?.content?.wrapper.style,
+          }}
         >
           <Section
             contained={settings?.content?.contained}
@@ -107,7 +117,10 @@ export const HeemLayout: FC<HeemLayoutProps> = ({
           id="footer-wrapper"
           contained={settings?.footer?.wrapper.contained}
           className={`${settings?.footer?.wrapper.className} bg-purple-700`}
-          style={settings?.footer?.wrapper.style}
+          style={{
+            backgroundColor: theme.body.bgColor,
+            ...settings?.footer?.wrapper.style,
+          }}
         >
           <Section
             id="footer"

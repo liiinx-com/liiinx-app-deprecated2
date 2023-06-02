@@ -22,7 +22,7 @@ export const LayoutFactory: FC<LayoutFactoryProps> = ({
         style={{
           width: "100%",
           height: "100%",
-          backgroundColor: theme.bodyBgColor,
+          backgroundColor: theme.body.bgColor,
         }}
       >
         <HeemLayout theme={theme} layoutData={layoutData}>
