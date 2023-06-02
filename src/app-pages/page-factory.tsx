@@ -1,6 +1,7 @@
 import { WebpageData } from "@/services/types";
 import { FC } from "react";
 import { BioPage } from "./bio";
+import { HomePage } from "./home";
 
 export interface PageFactoryProps {
   webpageData: WebpageData;
@@ -11,10 +12,10 @@ export interface PageProps {
 }
 
 export const PageFactory: FC<PageFactoryProps> = ({ webpageData }) => {
-  // TODO: implement factory => pageType and pageVariant
   const { pageVariant } = webpageData.page;
 
   if (pageVariant === "bio1") return <BioPage webpageData={webpageData} />;
+  if (pageVariant === "home1") return <HomePage webpageData={webpageData} />;
 
   return (
     <div>

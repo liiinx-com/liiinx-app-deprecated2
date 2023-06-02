@@ -1,3 +1,4 @@
+import { MenuDto } from "@/services/types/backend-types/menu";
 import { CSSProperties } from "react";
 import { Header1 } from "./header1";
 
@@ -6,6 +7,7 @@ export interface HeaderProps {
   className?: string;
   style?: CSSProperties;
   shadow?: boolean;
+  menu: MenuDto;
 }
 
 interface HeaderFactoryProps {
@@ -15,6 +17,12 @@ interface HeaderFactoryProps {
 
 const defaultProps: HeaderProps = {
   dir: "ltr",
+  menu: {
+    isActive: false,
+    isArchived: false,
+    items: [],
+    title: "",
+  },
   shadow: true,
 };
 

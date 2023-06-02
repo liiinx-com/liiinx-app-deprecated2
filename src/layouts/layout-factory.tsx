@@ -1,6 +1,6 @@
 import { LayoutData, ThemeDto } from "@/services/types";
 import { FC, ReactNode } from "react";
-import { HeemLayout } from "./heem";
+import { HeemLayout } from "./heemv2";
 
 export interface LayoutFactoryProps {
   layoutData: LayoutData;
