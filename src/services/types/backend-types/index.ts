@@ -1,4 +1,5 @@
 import { MenusDto } from "./menu";
+import { ProfileDto } from "./profile";
 import { ThemeDto } from "./theme";
 
 export * from "./theme";
@@ -41,6 +42,7 @@ export interface WebpageData {
   layout: LayoutData;
   page: PageData;
   theme: ThemeDto;
+  profile: ProfileDto;
 }
 
 export interface PageData {

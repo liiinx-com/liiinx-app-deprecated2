@@ -1,13 +1,12 @@
 import { BlockFactory } from "@/blocks/block-factory";
 import { Section } from "@/components/section";
-import { LayoutData, ThemeDto } from "@/services/types";
+import { WebpageData } from "@/services/types";
 import { FC, ReactNode } from "react";
 import styles from "./index.module.css";
 
 interface HeemLayoutProps {
   children: ReactNode;
-  theme: ThemeDto;
-  layoutData: LayoutData;
+  webpageData: WebpageData;
 }
 const variants = {
   titlebar: "titlebar1",
@@ -15,15 +14,14 @@ const variants = {
   footer: "footer1",
 };
 
-export const HeemLayout: FC<HeemLayoutProps> = ({
-  children,
-  theme,
-  layoutData,
-}) => {
+export const HeemLayout: FC<HeemLayoutProps> = ({ children, webpageData }) => {
   const {
-    settings,
-    menus: { headerPrimary, footerPrimary },
-  } = layoutData;
+    theme,
+    layout: {
+      settings,
+      menus: { headerPrimary, footerPrimary },
+    },
+  } = webpageData;
 
   return (
     <div className={`${styles["app-wrapper"]}`}>

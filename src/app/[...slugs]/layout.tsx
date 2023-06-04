@@ -19,13 +19,11 @@ export const generateMetadata = async ({ params }: any) => {
 };
 
 const WebsiteLayout = async ({ children, params }: WebsiteLayoutProps) => {
-  const { layout, theme } = await getPageData({ params });
+  const webpageData = await getPageData({ params });
 
   return (
     <AppState>
-      <LayoutFactory theme={theme} layoutData={layout}>
-        {children}
-      </LayoutFactory>
+      <LayoutFactory webPageData={webpageData}>{children}</LayoutFactory>
     </AppState>
   );
 };
