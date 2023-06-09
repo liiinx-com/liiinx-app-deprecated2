@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import themeReducer from "./theme.slice";
+import webpageReducer from "./webpage.slice";
 
 export const store = configureStore({
   reducer: {
-    theme: themeReducer,
+    webpage: webpageReducer,
   },
   //    middleware(getDefaultMiddleware) {
   //      return getDefaultMiddleware().concat(pokemonApi.middleware);

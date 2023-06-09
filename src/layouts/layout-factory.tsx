@@ -1,20 +1,20 @@
-import { WebpageData } from "@/services/types";
+import { store } from "@/store";
 import { FC, ReactNode } from "react";
 import { HeemLayout } from "./heemv2";
 
 export interface LayoutFactoryProps {
-  webPageData: WebpageData;
   children: ReactNode;
 }
 
-export const LayoutFactory: FC<LayoutFactoryProps> = ({
-  children,
-  webPageData,
-}) => {
+export const LayoutFactory: FC<LayoutFactoryProps> = ({ children }) => {
+  const {
+    webpage: { config },
+  } = store.getState();
+
   const {
     layout: { variant },
     theme,
-  } = webPageData;
+  } = config;
 
   if (variant === "heem1")
     return (
@@ -26,7 +26,7 @@ export const LayoutFactory: FC<LayoutFactoryProps> = ({
           backgroundColor: theme.body.bgColor,
         }}
       >
-        <HeemLayout webpageData={webPageData}>{children}</HeemLayout>
+        <HeemLayout>{children}</HeemLayout>
       </div>
     );
 

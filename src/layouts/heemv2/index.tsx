@@ -1,107 +1,107 @@
 import { BlockFactory } from "@/blocks/block-factory";
 import { Section } from "@/components/section";
-import { WebpageData } from "@/services/types";
+import { store } from "@/store";
 import { FC, ReactNode } from "react";
 import styles from "./index.module.css";
 
 interface HeemLayoutProps {
   children: ReactNode;
-  webpageData: WebpageData;
 }
 const variants = {
   titlebar: "titlebar1",
-  header: "header1",
-  footer: "footer1",
 };
 
-export const HeemLayout: FC<HeemLayoutProps> = ({ children, webpageData }) => {
+export const HeemLayout: FC<HeemLayoutProps> = ({ children }) => {
   const {
     theme,
     layout: {
-      settings,
+      layoutConfig,
       menus: { headerPrimary, footerPrimary },
     },
-  } = webpageData;
+  } = store.getState().webpage.config;
 
   return (
     <div className={`${styles["app-wrapper"]}`}>
-      {settings.topBar?.isActive && (
+      {layoutConfig.topBar?.isActive && (
         <Section
           id="top-bar-wrapper"
-          contained={settings?.topBar?.wrapper.contained}
-          className={`${settings?.topBar?.wrapper.className} bg-lime-700`}
-          style={settings?.topBar?.wrapper.style}
+          contained={layoutConfig?.topBar?.wrapperContained}
+          className={`${layoutConfig?.topBar?.wrapperClassName} bg-lime-700`}
+          style={layoutConfig?.topBar?.wrapperStyle}
         >
           <Section
             id="top-bar"
-            contained={settings?.topBar?.contained}
-            style={settings?.topBar?.style}
-            className={`${settings?.topBar?.className} bg-lime-300`}
+            contained={layoutConfig?.topBar?.blockContained}
+            style={layoutConfig?.topBar?.blockStyle}
+            className={`${layoutConfig?.topBar?.blockClassName} bg-lime-300`}
           >
             top-bar
           </Section>
         </Section>
       )}
 
-      {settings.header?.isActive && (
+      {layoutConfig.header?.isActive && (
         <Section
           id="header-wrapper"
-          contained={settings?.header?.wrapper.contained}
-          className={`${settings?.header?.wrapper.className}`}
+          contained={layoutConfig?.header?.wrapperContained}
+          className={`${layoutConfig?.header?.wrapperClassName}`}
           style={{
             backgroundColor: theme.body.bgColor,
-            ...settings?.header?.wrapper.style,
+            ...layoutConfig?.header?.wrapperStyle,
           }}
         >
           <Section
             id="header"
-            contained={settings?.header?.contained}
-            className={`${settings?.header?.className} bg-blue-300`}
-            style={settings?.header?.style}
+            contained={layoutConfig?.header?.blockContained}
+            className={`${layoutConfig?.header?.blockClassName} bg-blue-300`}
+            style={layoutConfig?.header?.blockStyle}
           >
             <BlockFactory
-              variant={variants.header}
-              props={{ className: "bg-transparent", menu: headerPrimary }}
+              variant={layoutConfig.header.blockVariant}
+              props={{
+                menu: headerPrimary,
+                ...layoutConfig.header.blockProps,
+              }}
               type="header"
             />
           </Section>
         </Section>
       )}
 
-      {settings.hero?.isActive && (
+      {/* {layoutConfig.hero?.isActive && (
         <Section
           id="hero-wrapper"
-          contained={settings?.hero?.wrapper.contained}
-          className={`${settings?.hero?.wrapper.className} bg-amber-700`}
+          contained={layoutConfig?.hero?.wrapper.contained}
+          className={`${layoutConfig?.hero?.wrapper.className} bg-amber-700`}
           style={{
             backgroundColor: theme.body.bgColor,
-            ...settings?.hero?.wrapper.style,
+            ...layoutConfig?.hero?.wrapper.style,
           }}
         >
           <Section
             id="hero"
-            contained={settings?.hero?.contained}
-            className={`${settings?.hero?.className} bg-amber-300`}
-            style={settings?.hero?.style}
+            contained={layoutConfig?.hero?.contained}
+            className={`${layoutConfig?.hero?.className} bg-amber-300`}
+            style={layoutConfig?.hero?.style}
           >
             hero
           </Section>
         </Section>
-      )}
-      {settings.content?.isActive && (
+      )} */}
+      {layoutConfig.content?.isActive && (
         <Section
           id="content-wrapper"
-          contained={settings?.content?.wrapper.contained}
-          className={`${settings?.content?.wrapper.className} bg-sky-700`}
+          contained={layoutConfig?.content?.wrapperContained}
+          className={`${layoutConfig?.content?.wrapperClassName} bg-sky-700`}
           style={{
             backgroundColor: theme.body.bgColor,
-            ...settings?.content?.wrapper.style,
+            ...layoutConfig?.content?.wrapperStyle,
           }}
         >
           <Section
-            contained={settings?.content?.contained}
-            className={`${settings?.content?.className} bg-sky-300`}
-            style={settings?.content?.style}
+            contained={layoutConfig?.content?.blockContained}
+            className={`${layoutConfig?.content?.blockClassName} bg-sky-300`}
+            style={layoutConfig?.content?.blockStyle}
           >
             {false && <aside className={styles["left-bar"]}>left-bar</aside>}
             <article className={styles["content"]}>{children}</article>
@@ -110,24 +110,24 @@ export const HeemLayout: FC<HeemLayoutProps> = ({ children, webpageData }) => {
         </Section>
       )}
 
-      {settings.footer?.isActive && (
+      {layoutConfig.footer?.isActive && (
         <Section
           id="footer-wrapper"
-          contained={settings?.footer?.wrapper.contained}
-          className={`${settings?.footer?.wrapper.className} bg-purple-700`}
+          contained={layoutConfig?.footer?.wrapperContained}
+          className={`${layoutConfig?.footer?.wrapperClassName} bg-purple-700`}
           style={{
             backgroundColor: theme.body.bgColor,
-            ...settings?.footer?.wrapper.style,
+            ...layoutConfig?.footer?.wrapperStyle,
           }}
         >
           <Section
             id="footer"
-            contained={settings?.footer?.contained}
-            className={`${settings?.footer?.className} bg-purple-300`}
-            style={settings?.footer?.style}
+            contained={layoutConfig?.footer?.blockContained}
+            className={`${layoutConfig?.footer?.blockClassName} bg-purple-300`}
+            style={layoutConfig?.footer?.blockStyle}
           >
             <BlockFactory
-              variant={variants.footer}
+              variant={layoutConfig.footer.blockVariant}
               props={{ className: "bg-transparent", menu: footerPrimary }}
               type="footer"
             />
@@ -135,18 +135,18 @@ export const HeemLayout: FC<HeemLayoutProps> = ({ children, webpageData }) => {
         </Section>
       )}
 
-      {settings.footerBar?.isActive && (
+      {layoutConfig.footerBar?.isActive && (
         <Section
           id="footer-bar-wrapper"
-          contained={settings?.footerBar?.wrapper.contained}
-          className={`${settings?.footerBar?.wrapper.className} bg-slate-700`}
-          style={settings?.footerBar?.wrapper.style}
+          contained={layoutConfig?.footerBar?.wrapperContained}
+          className={`${layoutConfig?.footerBar?.wrapperClassName} bg-slate-700`}
+          style={layoutConfig?.footerBar?.wrapperStyle}
         >
           <Section
             id="footer-bar"
-            contained={settings?.footerBar?.contained}
-            className={`${settings?.footerBar?.className} bg-slate-300`}
-            style={settings?.footerBar?.style}
+            contained={layoutConfig?.footerBar?.blockContained}
+            className={`${layoutConfig?.footerBar?.blockClassName} bg-slate-300`}
+            style={layoutConfig?.footerBar?.blockStyle}
           >
             footer-bar
           </Section>

@@ -4,34 +4,56 @@ import { ThemeDto } from "./theme";
 
 export * from "./theme";
 
-interface Element {
-  className?: string;
+export interface BlockProps {
   style?: object;
-  contained: boolean;
+
+  className?: string;
+}
+export interface HeaderProps extends BlockProps {
+  dir: string;
 }
 
-interface LayoutSection extends Element {
-  wrapper: Element;
+interface BlockDto {
+  blockClassName?: string;
+
+  blockStyle?: object;
+
+  blockContained: boolean;
+
+  blockType: string;
+
+  blockVariant: string;
+
+  blockProps?: BlockProps;
+
+  wrapperContained: boolean;
+
+  order?: number;
+
+  wrapperClassName?: string;
+
+  wrapperStyle?: object;
+
   isActive: boolean;
 }
 
-export interface PageSettingsDto {
+export interface PageLayoutDto {
   dir: "ltr" | "rtl";
   faviconUrl: string;
-  topBar?: LayoutSection;
-  header?: LayoutSection;
-  hero?: LayoutSection;
-  sidebar?: LayoutSection;
-  content?: LayoutSection;
-  footer?: LayoutSection;
-  footerBar?: LayoutSection;
+  topBar?: BlockDto;
+  header?: HeaderBlockDto;
+  // hero?: LayoutBlock;
+  sidebar?: BlockDto;
+  content?: BlockDto;
+  footer?: BlockDto;
+  footerBar?: BlockDto;
 }
 
 export interface LayoutData {
   handle: string;
   variant: string;
 
-  settings: PageSettingsDto;
+  layoutConfig: PageLayoutDto;
 
   menus: MenusDto;
 
@@ -51,4 +73,8 @@ export interface PageData {
   title: string;
   slug: string;
   // blocks: Block[];
+}
+
+export interface HeaderBlockDto extends BlockDto {
+  blockProps?: HeaderProps;
 }
