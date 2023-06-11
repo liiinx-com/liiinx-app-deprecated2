@@ -30,10 +30,8 @@ interface IconFactoryProps {
   props?: object;
 }
 
-export const IconFactory: FC<IconFactoryProps> = ({
-  name = "chevronLeft",
-  props = {},
-}) => {
+export const IconFactory: FC<IconFactoryProps> = ({ name, props = {} }) => {
+  if (!name) return null;
   const IconComponent = icons[name];
   return React.createElement(IconComponent, props);
 };

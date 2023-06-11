@@ -7,8 +7,12 @@ export interface MenuDto extends BaseEntityDto {
 }
 
 export interface MenusDto {
+  topBar?: MenuDto;
+  sideBar?: MenuDto;
   headerPrimary?: MenuDto;
+  headerSecondary?: MenuDto;
   footerPrimary?: MenuDto;
+  footerSecondary?: MenuDto;
 }
 
 export interface MenuItemDto {

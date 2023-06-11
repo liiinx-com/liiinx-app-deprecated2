@@ -5,7 +5,7 @@ export interface LogoDto {
 
   textLogoProps?: object;
 
-  imageLogoUrl?: string;
+  imageLogoUrl: string;
 
   imageLogoProps?: object;
 
@@ -16,14 +16,10 @@ export interface LogoDto {
 
 export interface ProfileDto extends BaseEntityDto {
   webpageId: string;
-
   headerLogo: LogoDto;
-
-  footerLogo?: LogoDto;
-
-  copyright?: string;
-
-  terms?: string;
-
-  privacy?: string;
+  footerLogo: LogoDto;
+  copyrightText: string;
+  title: string;
+  termsText: string;
+  privacyText: string;
 }

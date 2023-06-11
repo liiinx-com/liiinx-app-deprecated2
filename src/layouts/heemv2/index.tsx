@@ -7,9 +7,6 @@ import styles from "./index.module.css";
 interface HeemLayoutProps {
   children: ReactNode;
 }
-const variants = {
-  titlebar: "titlebar1",
-};
 
 export const HeemLayout: FC<HeemLayoutProps> = ({ children }) => {
   const {
