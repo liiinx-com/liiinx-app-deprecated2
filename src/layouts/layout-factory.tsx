@@ -1,6 +1,6 @@
 import { store } from "@/store";
 import { FC, ReactNode } from "react";
-import { HeemLayout } from "./heemv2";
+import { HeemLayout } from "./heem";
 
 export interface LayoutFactoryProps {
   children: ReactNode;
