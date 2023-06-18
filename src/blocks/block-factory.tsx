@@ -3,6 +3,7 @@ import { FooterFactory } from "./footer";
 import { HeaderFactory } from "./header";
 import { SocialLinksFactory } from "./social-links";
 import { TitleBarFactory } from "./titlebar";
+import { YoutubeVideosFactory } from "./youtube-videos";
 
 interface BlockFactoryProps {
   type: string;
@@ -20,6 +21,7 @@ export const BlockFactory: FC<BlockFactoryProps> = (props) => {
     titleBar: TitleBarFactory,
     socialLinks: SocialLinksFactory,
     footer: FooterFactory,
+    youtubeVideos: YoutubeVideosFactory,
 
     default: DefaultBlock,
   };

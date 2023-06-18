@@ -1,18 +1,30 @@
-import { MenuItem } from "@/services/types/menu";
-import { FC } from "react";
-import { IconFactory } from "../icons";
+import { IconFactory } from "@/components/icons";
+import { MenuItemDto } from "@/types/backend-types/menu";
+import Link from "next/link";
+import { CSSProperties, FC } from "react";
 import styles from "./menu-item.module.css";
 
-export const Item: FC<Partial<MenuItem>> = ({
+interface MenuItemProps extends Partial<MenuItemDto> {
+  className?: string;
+  style?: CSSProperties;
+  iconProps?: object | CSSProperties;
+}
+
+export const MenuItem: FC<MenuItemProps> = ({
   target = "_blank",
-  iconName = "",
-  textClassName = "",
-  textStyle = {},
+  title = "",
+  id = "",
+  url = "#",
+  className = "",
+  iconProps = {},
+  icon: iconName,
 }) => {
   return (
     <div className={styles.itemWrapper}>
-      testa
-      <IconFactory name={iconName} props={{ color: "red" }} />
+      <Link key={id} href={url} target={target} className={className}>
+        {title}
+        <IconFactory name={iconName} props={iconProps} />
+      </Link>
     </div>
   );
 };

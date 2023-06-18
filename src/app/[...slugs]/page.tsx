@@ -1,5 +1,5 @@
+import { getWebpage } from "@/actions/webpage";
 import { PageFactory } from "@/app-pages/page-factory";
-import { getPageData } from "@/services";
 import { WebsiteRouteParams } from "./layout";
 
 interface GenericPageParams {
@@ -11,8 +11,14 @@ export const generateMetadata = async ({ params }: GenericPageParams) => {
 };
 
 const GenericPage = async ({ params }: GenericPageParams) => {
-  const webpageData = await getPageData({ params });
-  return <PageFactory webpageData={webpageData} />;
+  const [handle = "liiinx", pageName = "home"] = params.slugs;
+  const webpageData = await getWebpage(handle, pageName);
+  return (
+    // TODO: size
+    <div className="sm:px-3 md:px-4 lg:px-5 xl:px-6 2xl:px-7">
+      <PageFactory webpageData={webpageData} />
+    </div>
+  );
 };
 
 export default GenericPage;

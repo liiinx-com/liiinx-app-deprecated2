@@ -1,20 +1,29 @@
 "use client";
 import { IconMenu } from "@/components/icons";
-import { store } from "@/store";
-import Link from "next/link";
+import { Logo } from "@/components/logo";
+import { Menu } from "@/components/menu";
+import { MenuItem } from "@/components/menu/menu-item";
+import { RootState } from "@/store";
 import { useState } from "react";
+import type { TypedUseSelectorHook } from "react-redux";
+import { useSelector } from "react-redux";
 import { HeaderProps } from "..";
+
+const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export const Header1 = ({
   dir,
   shadow,
   className = "",
   style = {},
-  menu,
 }: HeaderProps) => {
-  const t = store.getState().theme;
-  console.log("t :>> ", t);
-  const { items } = menu;
+  const {
+    profile: { headerLogo, title },
+    layout: {
+      menus: { headerPrimary },
+    },
+  } = useAppSelector((state) => state.webpage.config);
+
   const [isOpen, setOpen] = useState(false);
 
   return (
@@ -29,7 +38,7 @@ export const Header1 = ({
         <div className="lg:flex lg:items-center lg:justify-between">
           <div className="flex items-center justify-between">
             <a href="#">
-              {/* <TitleBar className="mt-2" title="Salamat Trading" /> */}
+              <Logo imageUrl={headerLogo.imageLogoUrl} textLogo={title} />
             </a>
 
             <div className="flex lg:hidden">
@@ -52,16 +61,28 @@ export const Header1 = ({
             } absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center`}
           >
             <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8">
-              {items.map(({ url, id, target, title }) => (
-                <Link
-                  key={id}
-                  href={url}
-                  target={target}
-                  className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  {title}
-                </Link>
-              ))}
+              {headerPrimary?.items && (
+                <Menu>
+                  {headerPrimary.items.map((i) => (
+                    <MenuItem
+                      key={i.id}
+                      {...i}
+                      className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    />
+                  ))}
+                </Menu>
+              )}
+              {/* {menu?.items &&
+                menu.items.map(({ url, id, target, title }) => (
+                  <Link
+                    key={id}
+                    href={url}
+                    target={target}
+                    className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    {title}
+                  </Link>
+                ))} */}
             </div>
 
             {/* <div className="flex items-center mt-4 lg:mt-0">

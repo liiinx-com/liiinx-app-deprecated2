@@ -1,22 +1,18 @@
-import { MenuItem } from "@/services/types/menu";
-import { FC } from "react";
-import { Item } from "./menu-item";
+import { FC, ReactNode } from "react";
 
 interface MenuProps {
-  items: Partial<MenuItem>[];
+  children: ReactNode;
   direction?: "row" | "column";
+  gap?: string;
 }
 
-export const Menu: FC<MenuProps> = ({ items, direction = "row" }) => {
+export const Menu: FC<MenuProps> = ({
+  children,
+  direction = "row",
+  gap = "gap-2",
+}) => {
   let className =
-    "w-full flex justify-evenly " +
-    (direction === "row" ? "flex-row" : "flex-col");
+    `w-full flex ${gap} ` + (direction === "row" ? "flex-row" : "flex-col");
 
-  return (
-    <div className={className}>
-      {items.map((i) => (
-        <Item key={i.id} {...i} />
-      ))}
-    </div>
-  );
+  return <div className={className}>{children}</div>;
 };

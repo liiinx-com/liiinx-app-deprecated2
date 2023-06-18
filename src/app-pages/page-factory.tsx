@@ -1,4 +1,4 @@
-import { WebpageData } from "@/services/types";
+import { WebpageData } from "@/types";
 import { FC } from "react";
 import { BioPage } from "./bio";
 import { HomePage } from "./home";
