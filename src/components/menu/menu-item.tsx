@@ -1,5 +1,5 @@
 import { IconFactory } from "@/components/icons";
-import { MenuItemDto } from "@/services/types/backend-types/menu";
+import { MenuItemDto } from "@/types/backend-types/menu";
 import Link from "next/link";
 import { CSSProperties, FC } from "react";
 import styles from "./menu-item.module.css";

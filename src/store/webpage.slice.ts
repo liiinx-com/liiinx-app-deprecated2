@@ -1,5 +1,5 @@
-import { LayoutData, PageData, ThemeDto, WebpageData } from "@/services/types";
-import { ProfileDto } from "@/services/types/backend-types/profile";
+import { LayoutData, PageData, ThemeDto, WebpageData } from "@/types";
+import { ProfileDto } from "@/types/backend-types/profile";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 export interface WebpageState {

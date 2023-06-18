@@ -1,12 +1,9 @@
-import { WebsiteRouteParams } from "@/app/[...slugs]/layout";
-import { WebpageData } from "@/services/types";
+import { WebpageData } from "@/types";
 
-export const getPageData = async ({
-  params,
-}: {
-  params: WebsiteRouteParams;
-}): Promise<WebpageData> => {
-  const [handle = "liiinx", pageName = "home"] = params.slugs;
+export const getWebpage = async (
+  handle: string,
+  pageName: string
+): Promise<WebpageData> => {
   const webpageData: WebpageData = await (
     await fetch(`http://localhost:3000/api/${handle}/${pageName}`, {
       cache: "no-cache",

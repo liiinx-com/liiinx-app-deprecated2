@@ -1,11 +1,12 @@
-import { LayoutFactory } from "@/layouts/layout-factory";
-import { getPageData } from "@/services";
 import { ReactNode } from "react";
 
+import { getWebpage } from "@/actions/webpage";
 import AppState from "@/components/app-state";
 import { StatePreloader } from "@/components/state-preloader";
+import { LayoutFactory } from "@/layouts/layout-factory";
 import { store } from "@/store";
 import { setWebpage } from "@/store/webpage.slice";
+
 import "./globals.css";
 
 export interface WebsiteRouteParams {
@@ -23,7 +24,8 @@ export const generateMetadata = async ({ params }: any) => {
 };
 
 const WebsiteLayout = async ({ children, params }: WebsiteLayoutProps) => {
-  const webpageData = await getPageData({ params });
+  const [handle = "liiinx", pageName = "home"] = params.slugs;
+  const webpageData = await getWebpage(handle, pageName);
   store.dispatch(setWebpage(webpageData));
 
   return (

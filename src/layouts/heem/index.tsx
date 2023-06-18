@@ -1,5 +1,5 @@
 import { BlockFactory } from "@/blocks/block-factory";
-import { LayoutData, ThemeDto } from "@/services/types";
+import { LayoutData, ThemeDto } from "@/types";
 import { FC, ReactNode } from "react";
 import styles from "./index.module.css";
 

@@ -2,6 +2,7 @@ import { MenusDto } from "./menu";
 import { ProfileDto } from "./profile";
 import { ThemeDto } from "./theme";
 
+export * from "./media";
 export * from "./theme";
 
 export interface BlockProps {
@@ -14,6 +15,8 @@ export interface HeaderProps extends BlockProps {
 }
 
 interface BlockDto {
+  id?: string;
+
   blockClassName?: string;
 
   blockStyle?: object;
@@ -52,12 +55,9 @@ export interface PageLayoutDto {
 export interface LayoutData {
   handle: string;
   variant: string;
-
+  id: string;
   layoutConfig: PageLayoutDto;
-
   menus: MenusDto;
-
-  // blocks: Block[];
 }
 
 export interface WebpageData {
@@ -72,7 +72,7 @@ export interface PageData {
   pageType: string;
   title: string;
   slug: string;
-  // blocks: Block[];
+  blocks: BlockDto[];
 }
 
 export interface HeaderBlockDto extends BlockDto {
