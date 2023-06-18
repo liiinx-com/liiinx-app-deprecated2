@@ -1,19 +1,23 @@
-.layoutWrapper {
+.app-wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
-.sidebar {
-  flex: 1;
+.top-bar {
 }
 
+.header {
+  background-color: transparent;
+}
+
+/* ------- */
 .mainWrapper {
   display: flex;
   flex-direction: column;
   flex: 5;
 }
 
-.mainContent {
+.main {
   display: flex;
   flex-direction: row;
 }
@@ -22,16 +26,12 @@
   flex: 3;
 }
 
-.leftBar {
+.left-bar {
   flex: 1;
 }
 
-.rightBar {
+.right-bar {
   flex: 1;
-}
-
-.header {
-  background-color: transparent;
 }
 
 .footer {
