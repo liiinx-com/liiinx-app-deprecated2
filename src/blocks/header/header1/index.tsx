@@ -19,6 +19,7 @@ export const Header1 = ({
 }: HeaderProps) => {
   const {
     profile: { headerLogo, title },
+    theme,
     layout: {
       menus: { headerPrimary },
     },
@@ -34,11 +35,18 @@ export const Header1 = ({
       } dark:bg-gray-800 ${className}`}
       style={style}
     >
-      <div className="container px-4 py-4 mx-auto">
+      <div className="container px-1 py-1 mx-auto">
         <div className="lg:flex lg:items-center lg:justify-between">
           <div className="flex items-center justify-between">
             <a href="#">
-              <Logo imageUrl={headerLogo.imageLogoUrl} textLogo={title} />
+              <Logo
+                textLogoClassName={
+                  theme.typography.primaryAccentText.className || ""
+                }
+                textLogoStyle={theme.typography.logo.style}
+                // imageUrl={headerLogo.imageLogoUrl}
+                textLogo={title}
+              />
             </a>
 
             <div className="flex lg:hidden">
@@ -67,6 +75,7 @@ export const Header1 = ({
                     <MenuItem
                       key={i.id}
                       {...i}
+                      style={theme.typography.primaryText.style}
                       className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                     />
                   ))}

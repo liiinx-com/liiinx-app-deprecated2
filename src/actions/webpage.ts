@@ -1,19 +1,13 @@
-import { WebpageData } from "@/types";
+import { ApiResponse, WebpageData } from "@/types";
+import { API_URL, request } from "./request";
 
 export const getWebpage = async (
   handle: string,
-  pageName: string
-): Promise<WebpageData> => {
-  const webpageData: WebpageData = await (
-    await fetch(`http://localhost:3000/api/${handle}/${pageName}`, {
-      cache: "no-cache",
-    })
-  ).json();
-
-  console.log("webpageData :>> ", webpageData);
-
-  // webpageData.layout.blocks = [sampleHeroBlock];
-  // webpageData.page.blocks = [sampleSocialLinksBlock];
-
-  return webpageData;
+  pageName: string,
+  locale: string
+): Promise<ApiResponse<WebpageData>> => {
+  return request({
+    method: "GET",
+    url: `${API_URL}/websites/${handle}/pages/${pageName}`,
+  });
 };

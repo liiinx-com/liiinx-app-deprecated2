@@ -13,7 +13,7 @@ export async function GET(req: NextRequest, { params }: any) {
       what: "send some empty result or something",
     }));
 
-  console.log("pageData :>> ", pageData);
+  // console.log("pageData :>> ", pageData);
 
   return NextResponse.json(pageData);
 }

@@ -16,14 +16,16 @@ export const Section: FC<SectionProps> = ({
   className = "",
   style = {},
 }) => {
+  const componentClassName = [
+    styles.wrapper,
+    contained ? "container" : "w-full",
+    className,
+  ].join(" ");
+
   return (
     <section
       {...(id ? { id } : {})}
-      className={[
-        styles.wrapper,
-        contained ? "container" : "w-full",
-        className,
-      ].join(" ")}
+      className={componentClassName}
       style={style}
     >
       {children}

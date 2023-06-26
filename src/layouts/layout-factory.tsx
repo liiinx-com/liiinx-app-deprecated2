@@ -20,10 +20,11 @@ export const LayoutFactory: FC<LayoutFactoryProps> = ({ children }) => {
     return (
       <div
         id="body-wrapper"
+        className={theme?.body?.className || ""}
         style={{
           width: "100%",
           height: "100%",
-          backgroundColor: theme.body.bgColor,
+          ...(theme?.body?.style || {}),
         }}
       >
         <HeemLayout>{children}</HeemLayout>

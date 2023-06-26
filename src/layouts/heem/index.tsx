@@ -1,6 +1,7 @@
 import { BlockFactory } from "@/blocks/block-factory";
 import { Section } from "@/components/section";
 import { store } from "@/store";
+import { common } from "@/utils";
 import { FC, ReactNode } from "react";
 import styles from "./index.module.css";
 
@@ -41,22 +42,30 @@ export const HeemLayout: FC<HeemLayoutProps> = ({ children }) => {
         <Section
           id="header-wrapper"
           contained={layoutConfig?.header?.wrapperContained}
-          className={`${layoutConfig?.header?.wrapperClassName}`}
+          className={common.twMerge(
+            layoutConfig?.header?.wrapperClassName || "",
+            theme.header?.wrapper?.className || ""
+          )}
           style={{
-            backgroundColor: theme.body.bgColor,
-            ...layoutConfig?.header?.wrapperStyle,
+            ...(theme.header?.wrapper?.style || {}),
+            ...(layoutConfig?.header?.wrapperStyle || {}),
           }}
         >
           <Section
             id="header"
-            contained={layoutConfig?.header?.blockContained}
-            className={`${layoutConfig?.header?.blockClassName} bg-blue-300`}
-            style={layoutConfig?.header?.blockStyle}
+            contained={layoutConfig?.header?.blockContained || true}
+            className={common.twMerge(
+              layoutConfig?.header?.blockClassName || "",
+              theme.header?.className || ""
+            )}
+            style={layoutConfig?.header?.blockStyle || {}}
           >
             <BlockFactory
               variant={layoutConfig.header.blockVariant}
               props={{
                 menu: headerPrimary,
+                className: theme?.header?.className || "",
+                style: theme?.header?.style || {},
                 ...layoutConfig.header.blockProps,
               }}
               type="header"
@@ -89,16 +98,25 @@ export const HeemLayout: FC<HeemLayoutProps> = ({ children }) => {
         <Section
           id="content-wrapper"
           contained={layoutConfig?.content?.wrapperContained}
-          className={`${layoutConfig?.content?.wrapperClassName} bg-sky-700`}
+          className={common.twMerge(
+            layoutConfig?.content?.wrapperClassName || "",
+            theme.content?.wrapper?.className || ""
+          )}
           style={{
-            backgroundColor: theme.body.bgColor,
-            ...layoutConfig?.content?.wrapperStyle,
+            ...(theme.content?.wrapper?.style || {}),
+            ...(layoutConfig?.content?.wrapperStyle || {}),
           }}
         >
           <Section
             contained={layoutConfig?.content?.blockContained}
-            className={`${layoutConfig?.content?.blockClassName} bg-sky-300`}
-            style={layoutConfig?.content?.blockStyle}
+            className={common.twMerge(
+              layoutConfig?.content?.blockClassName || "",
+              theme.content?.className || ""
+            )}
+            style={{
+              ...(layoutConfig?.content?.blockStyle || {}),
+              ...(theme?.content?.style || {}),
+            }}
           >
             {false && <aside className={styles["left-bar"]}>left-bar</aside>}
             <article className={styles["content"]}>{children}</article>
@@ -111,17 +129,26 @@ export const HeemLayout: FC<HeemLayoutProps> = ({ children }) => {
         <Section
           id="footer-wrapper"
           contained={layoutConfig?.footer?.wrapperContained}
-          className={`${layoutConfig?.footer?.wrapperClassName} bg-purple-700`}
+          className={common.twMerge(
+            layoutConfig?.footer?.wrapperClassName || "",
+            theme.footer?.wrapper?.className || ""
+          )}
           style={{
-            backgroundColor: theme.body.bgColor,
+            ...(theme.footer?.wrapper?.style || {}),
             ...layoutConfig?.footer?.wrapperStyle,
           }}
         >
           <Section
             id="footer"
             contained={layoutConfig?.footer?.blockContained}
-            className={`${layoutConfig?.footer?.blockClassName} bg-purple-300`}
-            style={layoutConfig?.footer?.blockStyle}
+            className={common.twMerge(
+              layoutConfig?.footer?.blockClassName || "",
+              theme.footer?.className || ""
+            )}
+            style={{
+              ...(theme?.footer?.style || {}),
+              ...(layoutConfig?.footer?.blockStyle || {}),
+            }}
           >
             <BlockFactory
               variant={layoutConfig.footer.blockVariant}
@@ -136,7 +163,7 @@ export const HeemLayout: FC<HeemLayoutProps> = ({ children }) => {
         <Section
           id="footer-bar-wrapper"
           contained={layoutConfig?.footerBar?.wrapperContained}
-          className={`${layoutConfig?.footerBar?.wrapperClassName} bg-slate-700`}
+          className={layoutConfig?.footerBar?.wrapperClassName || ""}
           style={layoutConfig?.footerBar?.wrapperStyle}
         >
           <Section

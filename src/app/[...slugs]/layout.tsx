@@ -1,12 +1,11 @@
-import { ReactNode } from "react";
-
 import { getWebpage } from "@/actions/webpage";
 import AppState from "@/components/app-state";
 import { StatePreloader } from "@/components/state-preloader";
 import { LayoutFactory } from "@/layouts/layout-factory";
 import { store } from "@/store";
 import { setWebpage } from "@/store/webpage.slice";
-
+import { notFound } from "next/navigation";
+import { ReactNode } from "react";
 import "./globals.css";
 
 export interface WebsiteRouteParams {
@@ -25,7 +24,12 @@ export const generateMetadata = async ({ params }: any) => {
 
 const WebsiteLayout = async ({ children, params }: WebsiteLayoutProps) => {
   const [handle = "liiinx", pageName = "home"] = params.slugs;
-  const webpageData = await getWebpage(handle, pageName);
+  const locale = "en";
+
+  const response = await getWebpage(handle, pageName, locale);
+  if (!response.ok) notFound();
+
+  const webpageData = response.data;
   store.dispatch(setWebpage(webpageData));
 
   return (
