@@ -1,13 +1,22 @@
 import { getMediaList } from "@/actions/media";
 import { store } from "@/store";
-import { MediaItemDto } from "@/types";
-import { CSSProperties } from "react";
+import { MediaItemResponse } from "@/types/media";
+import { CSSProperties, ReactNode } from "react";
 import { YoutubeVideos1 } from "./youtube-videos1";
+
+export interface VideoCardProps {
+  video: MediaItemResponse;
+  containerStyle?: CSSProperties;
+  showChannelName?: boolean;
+  showWatchLater?: boolean;
+  showMoreButton?: boolean;
+}
 
 export interface YoutubeVideosProps {
   className?: string;
   style?: CSSProperties;
-  videos: MediaItemDto[];
+  videos: MediaItemResponse[];
+  titleComponent?: ReactNode;
 }
 
 interface YoutubeVideosFactoryProps {

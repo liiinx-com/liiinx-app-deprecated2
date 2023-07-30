@@ -1,4 +1,5 @@
 import { GetMediaResponse } from "@/types";
+import { common } from "@/utils";
 
 interface GetMediaParams {
   layoutId: string;
@@ -22,6 +23,11 @@ export const getMediaList = async ({
       }
     )
   ).json();
+
+  mediaListResponse.items = mediaListResponse.items.map((i) => {
+    i.publishedAtDayjs = common.date.toDayjs(i.publishedAt);
+    return i;
+  });
 
   return mediaListResponse;
 };

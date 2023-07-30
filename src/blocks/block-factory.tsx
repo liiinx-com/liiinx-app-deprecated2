@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import { FooterFactory } from "./footer";
 import { HeaderFactory } from "./header";
 import { SocialLinksFactory } from "./social-links";
-import { TitleBarFactory } from "./titlebar";
 import { YoutubeVideosFactory } from "./youtube-videos";
 
 interface BlockFactoryProps {
@@ -18,7 +17,6 @@ const DefaultBlock: FC<BlockFactoryProps> = ({ type, variant }) => {
 export const BlockFactory: FC<BlockFactoryProps> = (props) => {
   const blocks: any = {
     header: HeaderFactory,
-    titleBar: TitleBarFactory,
     socialLinks: SocialLinksFactory,
     footer: FooterFactory,
     youtubeVideos: YoutubeVideosFactory,

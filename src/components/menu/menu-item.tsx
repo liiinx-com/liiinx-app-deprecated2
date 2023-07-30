@@ -17,11 +17,18 @@ export const MenuItem: FC<MenuItemProps> = ({
   url = "#",
   className = "",
   iconProps = {},
+  style = {},
   icon: iconName,
 }) => {
   return (
     <div className={styles.itemWrapper}>
-      <Link key={id} href={url} target={target} className={className}>
+      <Link
+        key={id}
+        href={url}
+        target={target}
+        className={className}
+        style={style}
+      >
         {title}
         <IconFactory name={iconName} props={iconProps} />
       </Link>

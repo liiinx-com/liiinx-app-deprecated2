@@ -1,4 +1,6 @@
+import { Dayjs } from "dayjs";
 import { BaseEntityDto } from "./base";
+import { ThumbnailDto } from "./thumbnail";
 
 export interface GetMediaResponse {
   offset: number;
@@ -8,22 +10,14 @@ export interface GetMediaResponse {
   items: MediaItemResponse[];
 }
 
-export interface Thumbnail {
-  url: string;
+export interface MediaStatistics {
+  viewCount: number;
 
-  width: number;
+  likeCount: number;
 
-  height: number;
-}
+  favoriteCount: number;
 
-export interface ThumbnailDto {
-  default: Thumbnail;
-  high: Thumbnail;
-  medium: Thumbnail;
-}
-
-export interface MediaItemResponse extends MediaItemDto {
-  url: string;
+  commentCount: number;
 }
 
 export interface MediaItemDto extends BaseEntityDto {
@@ -35,9 +29,19 @@ export interface MediaItemDto extends BaseEntityDto {
 
   thumbnails: ThumbnailDto;
 
+  statistics: MediaStatistics;
+
   mediaProvider: string;
 
-  publishedAt: Date;
+  publishedAt: string;
+
+  publishedAtDayjs: Dayjs;
 
   order?: number;
+}
+
+export interface MediaItemResponse extends MediaItemDto {
+  url: string;
+
+  duration: any;
 }

@@ -102,7 +102,7 @@ a {
     bottom: 0;
     margin: 4px;
     color: #ffffff;
-    font-family: Roboto;
+    // font-family: Roboto;
     font-weight: 500;
     font-size: 11px;
     display: inline-block;
@@ -132,11 +132,11 @@ a {
   }
 
   .content-container {
-    font-family: Roboto;
+    // font-family: Roboto;
     padding-top: 10px;
     padding-right: 24px;
     position: relative;
-    h3 {
+    .video-title {
       display: -webkit-box;
       margin: 0;
       font-size: 14px;
@@ -153,7 +153,7 @@ a {
       .channel-name {
         margin: 0;
         font-size: 12px;
-        font-family: Roboto;
+        // font-family: Roboto;
         color: #606060;
         display: block;
         width: 100%;
@@ -239,7 +239,7 @@ a {
     justify-content: center;
     align-items: center;
     .playlist-count {
-      font-family: Roboto;
+      // font-family: Roboto;
       font-weight: 400;
       font-size: 16px;
       color: rgba(255, 255, 255, 0.8);
@@ -259,7 +259,7 @@ a {
 
   .playall-text {
     color: rgba(255, 255, 255, 0.8);
-    font-family: Roboto;
+    // font-family: Roboto;
     font-weight: 500;
     font-size: 13px;
     text-transform: uppercase;
