@@ -1,3 +1,4 @@
+import { SessionProvider } from "@/components/providers/session-provider";
 import { FC, ReactNode } from "react";
 import "./globals.css";
 
@@ -10,7 +11,9 @@ interface RootLayoutProps {
 const RootLayout: FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SessionProvider>{children}</SessionProvider>
+      </body>
     </html>
   );
 };

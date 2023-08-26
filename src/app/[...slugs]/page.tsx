@@ -12,6 +12,7 @@ export const generateMetadata = async ({ params }: GenericPageParams) => {
 };
 
 const GenericPage = async ({ params }: GenericPageParams) => {
+  // TODO: get from store instead of API
   const [handle = "liiinx", pageName = "home"] = params.slugs;
   const locale = "en";
   const response = await getWebpage(handle, pageName, locale);

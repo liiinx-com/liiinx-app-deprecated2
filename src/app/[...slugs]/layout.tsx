@@ -1,5 +1,5 @@
 import { getWebpage } from "@/actions/webpage";
-import AppState from "@/components/app-state";
+import { AppState } from "@/components/providers/app-state";
 import { StatePreloader } from "@/components/state-preloader";
 import { LayoutFactory } from "@/layouts/layout-factory";
 import { store } from "@/store";

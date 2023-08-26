@@ -2,12 +2,14 @@ import React, { FC } from "react";
 import {
   BsChevronLeft,
   BsEnvelopeAt,
+  BsFillHouseFill,
   BsInstagram,
   BsTelegram,
   BsTiktok,
   BsTwitter,
   BsWechat,
   BsWhatsapp,
+  BsX,
   BsYoutube,
 } from "react-icons/bs";
 export { HiBars3 as IconMenu } from "react-icons/hi2";
@@ -22,7 +24,9 @@ const icons: any = {
   wechat: BsWechat,
   tiktok: BsTiktok,
 
+  close: BsX,
   chevronLeft: BsChevronLeft,
+  home: BsFillHouseFill,
 };
 
 interface IconFactoryProps {
